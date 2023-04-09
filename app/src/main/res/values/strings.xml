@@ -5,4 +5,10 @@
     <string name="getting_started">Getting Started</string>
     <string name="login_successful">Login Successful</string>
     <string name="logout">Logout</string>
+    <string name="sampletext">SampleText</string>
+    <string name="additional_information">Additional Information :</string>
+    <string name="road">Road</string>
+    <string name="address">Address :</string>
+    <string name="password">Password :</string>
+    <string name="submit">Submit</string>
 </resources>
