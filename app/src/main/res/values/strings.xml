@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">pothole-detection-system</string>
+    <string name="sign_in">Sign in with Google</string>
+    <string name="google_logo">Google Logo</string>
+    <string name="getting_started">Getting Started</string>
+    <string name="login_successful">Login Successful</string>
+    <string name="logout">Logout</string>
+</resources>
