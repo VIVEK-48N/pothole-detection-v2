@@ -39,7 +39,7 @@ public class Google_SignIn extends AppCompatActivity {
         });
 
     }
-
+    // SignIn Using GooglePlay Services
     public  void  signIn(){
         Intent signInIntent = gsc.getSignInIntent();
         startActivityForResult(signInIntent,1000);

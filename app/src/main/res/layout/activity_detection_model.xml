@@ -10,19 +10,20 @@
         android:id="@+id/picture"
         android:layout_width="284dp"
         android:layout_height="328dp"
-        android:layout_marginTop="60dp"
+        android:contentDescription="@string/image_to_be_predicted"
+        app:layout_constraintBottom_toTopOf="@+id/classified_as"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:srcCompat="@drawable/google_logo"
-        android:contentDescription="@string/image_to_be_predicted" />
+        app:layout_constraintTop_toBottomOf="@+id/LogoutBtn2"
+        app:layout_constraintVertical_bias="0.394"
+        tools:srcCompat="@drawable/google_logo" />
 
     <TextView
         android:id="@+id/classified_as"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="44dp"
+        android:layout_marginStart="80dp"
         android:text="@string/classified_as"
         android:textSize="20sp"
         app:layout_constraintBaseline_toBaselineOf="@+id/result"
@@ -37,10 +38,10 @@
         android:textSize="20sp"
         app:layout_constraintBottom_toTopOf="@+id/btn_camera"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.225"
+        app:layout_constraintHorizontal_bias="0.44"
         app:layout_constraintStart_toEndOf="@+id/classified_as"
         app:layout_constraintTop_toBottomOf="@+id/picture"
-        app:layout_constraintVertical_bias="0.312" />
+        app:layout_constraintVertical_bias="0.31" />
 
     <Button
         android:id="@+id/btn_camera"
@@ -53,6 +54,28 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/classified_as" />
 
+    <TextView
+        android:id="@+id/profileName2"
+        android:layout_width="256dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="28dp"
+        android:ellipsize="end"
+        android:maxLines="1"
+        android:singleLine="true"
+        android:text="@string/sampletext"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+    <Button
+        android:id="@+id/LogoutBtn2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="16dp"
+        android:text="@string/logout"
+        app:layout_constraintBaseline_toBaselineOf="@+id/profileName2"
+        app:layout_constraintEnd_toEndOf="parent" />
     <Button
         android:id="@+id/form"
         android:layout_width="match_parent"
