@@ -86,6 +86,8 @@ public class registration_more_info extends AppCompatActivity {
 
         //firebase Datastore
         db = FirebaseFirestore.getInstance();
+
+
     }
 
     private void createUser() {
@@ -103,7 +105,10 @@ public class registration_more_info extends AppCompatActivity {
                 public void onComplete(@NonNull Task<AuthResult> task) {
                     if (task.isSuccessful()){
                         Toast.makeText(getApplicationContext(),"Successful Registration",Toast.LENGTH_SHORT).show();
-                        startActivity(new Intent(registration_more_info.this,detection_model.class));
+                        Intent intent=new Intent(registration_more_info.this,detection_model.class);
+                        intent.putExtra("homeAdd",address.getText().toString().trim());
+                        startActivity(intent);
+                        
                     }else{
                         Toast.makeText(getApplicationContext(),"Registration Error",Toast.LENGTH_SHORT).show();
                     }

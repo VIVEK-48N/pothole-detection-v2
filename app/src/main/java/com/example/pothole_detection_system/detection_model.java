@@ -59,7 +59,12 @@ public class detection_model extends AppCompatActivity {
         form.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(detection_model.this,Form.class));
+                Intent intent = getIntent();
+                String str = intent.getStringExtra("homeAdd");
+
+                Intent b1 = new Intent(detection_model.this,Form.class);
+                b1.putExtra("ADDRESS",str);
+                startActivity(b1);
             }
         });
     }
