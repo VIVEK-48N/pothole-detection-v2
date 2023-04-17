@@ -8,8 +8,8 @@
 
     <ImageView
         android:id="@+id/picture"
-        android:layout_width="284dp"
-        android:layout_height="328dp"
+        android:layout_width="300dp"
+        android:layout_height="300dp"
         android:contentDescription="@string/image_to_be_predicted"
         app:layout_constraintBottom_toTopOf="@+id/classified_as"
         app:layout_constraintEnd_toEndOf="parent"
@@ -17,13 +17,13 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/LogoutBtn2"
         app:layout_constraintVertical_bias="0.394"
-        tools:srcCompat="@drawable/google_logo" />
+        app:srcCompat="@drawable/common_google_signin_btn_icon_dark" />
 
     <TextView
         android:id="@+id/classified_as"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="80dp"
+        android:layout_marginStart="40dp"
         android:text="@string/classified_as"
         android:textSize="20sp"
         app:layout_constraintBaseline_toBaselineOf="@+id/result"

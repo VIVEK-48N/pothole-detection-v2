@@ -27,7 +27,7 @@ import java.util.Objects;
 
 public class registration_more_info extends AppCompatActivity {
     TextView userName;
-    Button logout , submit_user;
+    Button logout , submit_user, next;
     EditText address;
     EditText password;
 
@@ -45,6 +45,8 @@ public class registration_more_info extends AppCompatActivity {
         address = findViewById(R.id.user_address);
         password = findViewById(R.id.User_Password);
         submit_user = findViewById(R.id.button);
+        next = findViewById(R.id.button2);
+
 
         db = FirebaseFirestore.getInstance();
         mAuth = FirebaseAuth.getInstance();
@@ -83,7 +85,12 @@ public class registration_more_info extends AppCompatActivity {
 
         });
 
-
+        next.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(registration_more_info.this,detection_model.class));
+            }
+        });
         //firebase Datastore
         db = FirebaseFirestore.getInstance();
 
@@ -108,7 +115,7 @@ public class registration_more_info extends AppCompatActivity {
                         Intent intent=new Intent(registration_more_info.this,detection_model.class);
                         intent.putExtra("homeAdd",address.getText().toString().trim());
                         startActivity(intent);
-                        
+
                     }else{
                         Toast.makeText(getApplicationContext(),"Registration Error",Toast.LENGTH_SHORT).show();
                     }
