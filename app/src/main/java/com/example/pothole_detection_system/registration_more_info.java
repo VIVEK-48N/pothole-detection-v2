@@ -1,8 +1,5 @@
 package com.example.pothole_detection_system;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
@@ -12,6 +9,9 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.auth.api.signin.GoogleSignInClient;
@@ -20,14 +20,15 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.messaging.FirebaseMessaging;
 
-import java.util.Objects;
+import java.util.HashMap;
+import java.util.Map;
 
 public class registration_more_info extends AppCompatActivity {
     TextView userName;
-    Button logout , submit_user, next;
+    Button logout , submit_user;
     EditText address;
     EditText password;
 
@@ -45,7 +46,6 @@ public class registration_more_info extends AppCompatActivity {
         address = findViewById(R.id.user_address);
         password = findViewById(R.id.User_Password);
         submit_user = findViewById(R.id.button);
-        next = findViewById(R.id.button2);
 
 
         db = FirebaseFirestore.getInstance();
@@ -85,12 +85,7 @@ public class registration_more_info extends AppCompatActivity {
 
         });
 
-        next.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(registration_more_info.this,detection_model.class));
-            }
-        });
+
         //firebase Datastore
         db = FirebaseFirestore.getInstance();
 
@@ -111,6 +106,7 @@ public class registration_more_info extends AppCompatActivity {
                 @Override
                 public void onComplete(@NonNull Task<AuthResult> task) {
                     if (task.isSuccessful()){
+                        registerUserToken();
                         Toast.makeText(getApplicationContext(),"Successful Registration",Toast.LENGTH_SHORT).show();
                         Intent intent=new Intent(registration_more_info.this,detection_model.class);
                         intent.putExtra("homeAdd",address.getText().toString().trim());
@@ -132,5 +128,24 @@ public class registration_more_info extends AppCompatActivity {
             startActivity(new Intent(registration_more_info.this,MainActivity.class));
         }
     });
+    }
+
+    //Register user token with uid and token and home address.
+
+    void  registerUserToken(){
+        FirebaseMessaging.getInstance().getToken().addOnCompleteListener(new OnCompleteListener<String>() {
+            @Override
+            public void onComplete(@NonNull Task<String> task) {
+                if(!task.isSuccessful()){
+                    return;
+                }
+                String token = task.getResult();
+                Map<String,String> maptoken = new HashMap<>();
+                maptoken.put("Token",token);
+                maptoken.put("home_add",address.getText().toString().trim());
+                FirebaseFirestore.getInstance().collection("Tokens").document(FirebaseAuth.getInstance().getCurrentUser().getUid()).set(maptoken);
+            }
+        });
+
     }
 }

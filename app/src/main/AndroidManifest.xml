@@ -3,6 +3,9 @@
     xmlns:tools="http://schemas.android.com/tools">
     <uses-permission android:name="android.permission.CAMERA"/>
     <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.VIBRATE" />
+    <uses-permission android:name="android.permission.POST_NOTIFICATIONS"/>
+
     <application
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
@@ -13,8 +16,18 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Potholedetectionsystem"
         tools:targetApi="31">
+        <service
+            android:name=".FirebaseMessagingService"
+            android:permission="TODO"
+            tools:ignore="ExportedService"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="com.google.firebase.MESSAGING_EVENT" />
+            </intent-filter>
+        </service>
         <activity
             android:name=".Form"
+            android:launchMode="singleTop"
             android:label="Record Form"
             android:parentActivityName=".detection_model"
             android:exported="false">
