@@ -65,7 +65,8 @@
         <activity
             android:name=".MainActivity"
             android:exported="true"
-            android:label="Pothole Detection System">
+            android:label="Pothole Detection System"
+            >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

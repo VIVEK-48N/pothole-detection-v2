@@ -9,4 +9,8 @@
     <color name="white">#FFFFFFFF</color>
     <color name="light_green">#5CA4A9</color>
     <color name="transparent">#00FFFFFF</color>
+    <color name="light_vibrant_green">#cff3f1</color>
+<!--    <color name="dark_vibrant_green">#578f8c</color>-->
+    <color name="dark_vibrant_green">#128C7E</color>
+    <color name="dark_vibrant_red">#FF2511</color>
 </resources>
