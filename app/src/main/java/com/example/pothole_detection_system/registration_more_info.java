@@ -28,7 +28,7 @@ import java.util.Map;
 
 public class registration_more_info extends AppCompatActivity {
     TextView userName;
-    Button logout , submit_user;
+    Button logout , submit_user, next;
     EditText address;
     EditText password;
 
@@ -46,6 +46,7 @@ public class registration_more_info extends AppCompatActivity {
         address = findViewById(R.id.user_address);
         password = findViewById(R.id.User_Password);
         submit_user = findViewById(R.id.button);
+        next = findViewById(R.id.next);
 
 
         db = FirebaseFirestore.getInstance();
@@ -56,6 +57,7 @@ public class registration_more_info extends AppCompatActivity {
         gsc = GoogleSignIn.getClient(this,gso);
 
         GoogleSignInAccount account = GoogleSignIn.getLastSignedInAccount(this);
+
 
         if (account!=null){
             String personName = account.getEmail();
@@ -83,6 +85,12 @@ public class registration_more_info extends AppCompatActivity {
                 createUser();
             }
 
+        });
+        next.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(registration_more_info.this,detection_model.class));
+            }
         });
 
 
